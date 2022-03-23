@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/drawable/layer.xml" value="0.1" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/drawable/shape.xml" value="0.17357859531772576" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/layout/feature_displayroute.xml" value="0.1" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/layout/fragment_display_route.xml" value="0.2" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/layout/listmod_item.xml" value="0.4" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/layout/main_activity.xml" value="0.12192622950819672" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/layout/main_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/menu/mnumods.xml" value="0.16486486486486487" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="..\:/Users/image/AndroidStudioProjects/BusSimulationChannel/app/src/main/res/xml/betwork_security_config.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
