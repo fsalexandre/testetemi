@@ -4,6 +4,8 @@ com/bsc/protonbusmodscom/databinding/MainActivityBinding.java
  com.bsc.protonbusmodscom.databinding.MainActivityBinding
 com/bsc/protonbusmodscom/databinding/FragmentDisplayRouteBinding.java
  com.bsc.protonbusmodscom.databinding.FragmentDisplayRouteBinding
+com/bsc/protonbusmodscom/databinding/ListobjimageItemBinding.java
+ com.bsc.protonbusmodscom.databinding.ListobjimageItemBinding
 com/bsc/protonbusmodscom/DataBindingTriggerClass.java
  com.bsc.protonbusmodscom.DataBindingTriggerClass
 com/bsc/protonbusmodscom/BuildConfig.java

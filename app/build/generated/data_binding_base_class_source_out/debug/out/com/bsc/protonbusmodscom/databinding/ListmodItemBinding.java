@@ -36,18 +36,18 @@ public final class ListmodItemBinding implements ViewBinding {
   public final ImageView frThumbImg;
 
   @NonNull
-  public final TextView frThumbTitle;
+  public final TextView txtTextContent;
 
   private ListmodItemBinding(@NonNull ConstraintLayout rootView, @NonNull View divider,
       @NonNull TextView dtModAssembly, @NonNull TextView dtModStyle, @NonNull TextView frThumbDesc,
-      @NonNull ImageView frThumbImg, @NonNull TextView frThumbTitle) {
+      @NonNull ImageView frThumbImg, @NonNull TextView txtTextContent) {
     this.rootView = rootView;
     this.divider = divider;
     this.dtModAssembly = dtModAssembly;
     this.dtModStyle = dtModStyle;
     this.frThumbDesc = frThumbDesc;
     this.frThumbImg = frThumbImg;
-    this.frThumbTitle = frThumbTitle;
+    this.txtTextContent = txtTextContent;
   }
 
   @Override
@@ -107,14 +107,14 @@ public final class ListmodItemBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.fr_thumb_title;
-      TextView frThumbTitle = ViewBindings.findChildViewById(rootView, id);
-      if (frThumbTitle == null) {
+      id = R.id.txtTextContent;
+      TextView txtTextContent = ViewBindings.findChildViewById(rootView, id);
+      if (txtTextContent == null) {
         break missingId;
       }
 
       return new ListmodItemBinding((ConstraintLayout) rootView, divider, dtModAssembly, dtModStyle,
-          frThumbDesc, frThumbImg, frThumbTitle);
+          frThumbDesc, frThumbImg, txtTextContent);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

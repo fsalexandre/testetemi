@@ -1,39 +1,36 @@
 package com.bsc.protonbusmodscom.ui.displayroute
 
-import android.content.res.Resources
 import android.graphics.*
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.res.ResourcesCompat
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.bsc.protonbusmodscom.R
-import com.bsc.protonbusmodscom.ui.main.MainFragment
 import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
 import com.google.android.material.slider.Slider
 import kotlinx.android.synthetic.main.fragment_display_route.*
-import android.graphics.drawable.LayerDrawable
 
 import android.graphics.drawable.Drawable
 import android.graphics.Bitmap
-import androidx.core.content.ContextCompat
 import android.graphics.BitmapFactory
-import androidx.core.graphics.drawable.toBitmap
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
+import android.provider.MediaStore
+import androidx.navigation.Navigation
+import com.bsc.protonbusmodscom.adapter.ImgObjectsAdapter
 import com.bsc.protonbusmodscom.data.model.DisplayLayersData
+import com.bsc.protonbusmodscom.listener.objImageListener
+import com.google.gson.Gson
 
 
-class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener {
+class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, objImageListener {
 
     companion object {
         fun newInstance() = DisplayRouteFragment()
@@ -49,6 +46,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var bitmap_text: String
     private var xIMG: Float = 15f
     private var yIMG: Float = 160f
+    private lateinit var objectImageAdapter: ImgObjectsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,6 +64,8 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener {
         txtDisplayRoute.setText("2022 WELCOME!!")
     }
 
+
+
     private fun setButtons(){
         btnAddCamada.setOnClickListener {
             val objBitmapItem = DisplayLayersData(
@@ -77,7 +77,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 bitmap_textSize = bitmap_textSize
             )
             objBitmaps.addAll(listOf(objBitmapItem))
-
+            setObjList()
         }
         btnLeft.setOnClickListener {
             xIMG-=10
@@ -110,6 +110,9 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener {
                     generateImage(requireView(), sliderfontsize.value, getSelectedFontTTF(requireView()), xIMG, yIMG)
                 }
                 .show()
+        }
+        btnSaveGallery.setOnClickListener {
+            saveImage(imgDisplay.drawable,"0.png")
         }
     }
 
@@ -217,13 +220,12 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     private fun updateDisplaybySelectedItem(v: View){
-        val slider = v.findViewById<Slider>(R.id.sliderfontsize)
-        generateImage(v, slider.value, getSelectedFontTTF(v), xIMG, yIMG)
+        generateImage(v, sliderfontsize.value, getSelectedFontTTF(v), xIMG, yIMG)
     }
 
     fun getSelectedFontTTF(v: View): Int {
 
-        val fontSpinner: Spinner =  v.findViewById(R.id.fontSpinner)
+
         when(fontSpinner.selectedItem.toString()){
             "Bat Bus Readout" -> return R.font.batbus
             "BusMatrix Condensed" -> return R.font.busmatrix
@@ -231,6 +233,44 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener {
             "MBTA Bus Route Display" -> return R.font.mtbadisplay
         }
         return 0
+    }
+
+    // Method to save an image to gallery and return uri
+    private fun saveImage(drawable: Drawable, title:String):Uri{
+        // Get the image from drawable resource as drawable object
+       // val drawable = ContextCompat.getDrawable(requireContext(),drawable)
+
+        // Get the bitmap from drawable object
+        val bitmap = (drawable as BitmapDrawable).bitmap
+        val contentResolver = requireActivity().contentResolver
+        // Save image to gallery
+        val savedImageURL = MediaStore.Images.Media.insertImage(
+            contentResolver,
+            bitmap,
+            title,
+            "Image of $title"
+        )
+
+        // Parse the gallery image url to uri
+        return Uri.parse(savedImageURL)
+    }
+
+    private fun setObjList() {
+
+        if (rvListObjectsEditor.adapter == null) {
+            objectImageAdapter = ImgObjectsAdapter(objBitmaps, this.requireContext(), this)
+            rvListObjectsEditor.adapter = objectImageAdapter
+        } else {
+            objectImageAdapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onSelectVolume(itemObjData: DisplayLayersData, v: View) {
+        val bundle = Bundle()
+        val gson = Gson()
+        val json = gson.toJson(itemObjData)
+//        bundle.putString("b",json)
+//        Navigation.findNavController(v).navigate(R.id.volumeDetails, bundle)
     }
 
 

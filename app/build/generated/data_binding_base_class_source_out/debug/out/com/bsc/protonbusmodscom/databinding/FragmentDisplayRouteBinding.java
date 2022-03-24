@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.bsc.protonbusmodscom.R;
@@ -39,6 +40,9 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
   public final Button btnRight;
 
   @NonNull
+  public final Button btnSaveGallery;
+
+  @NonNull
   public final Button btnUP;
 
   @NonNull
@@ -54,6 +58,9 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
   public final ImageView imgDisplay;
 
   @NonNull
+  public final RecyclerView rvListObjectsEditor;
+
+  @NonNull
   public final Slider sliderfontsize;
 
   @NonNull
@@ -61,9 +68,10 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
 
   private FragmentDisplayRouteBinding(@NonNull ConstraintLayout rootView,
       @NonNull Button btnAddCamada, @NonNull Button btnChoiceColor, @NonNull Button btnDown,
-      @NonNull Button btnLeft, @NonNull Button btnRight, @NonNull Button btnUP,
-      @NonNull Spinner fontSpinner, @NonNull ImageView imageView, @NonNull ImageView imageView2,
-      @NonNull ImageView imgDisplay, @NonNull Slider sliderfontsize,
+      @NonNull Button btnLeft, @NonNull Button btnRight, @NonNull Button btnSaveGallery,
+      @NonNull Button btnUP, @NonNull Spinner fontSpinner, @NonNull ImageView imageView,
+      @NonNull ImageView imageView2, @NonNull ImageView imgDisplay,
+      @NonNull RecyclerView rvListObjectsEditor, @NonNull Slider sliderfontsize,
       @NonNull EditText txtDisplayRoute) {
     this.rootView = rootView;
     this.btnAddCamada = btnAddCamada;
@@ -71,11 +79,13 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
     this.btnDown = btnDown;
     this.btnLeft = btnLeft;
     this.btnRight = btnRight;
+    this.btnSaveGallery = btnSaveGallery;
     this.btnUP = btnUP;
     this.fontSpinner = fontSpinner;
     this.imageView = imageView;
     this.imageView2 = imageView2;
     this.imgDisplay = imgDisplay;
+    this.rvListObjectsEditor = rvListObjectsEditor;
     this.sliderfontsize = sliderfontsize;
     this.txtDisplayRoute = txtDisplayRoute;
   }
@@ -137,6 +147,12 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnSaveGallery;
+      Button btnSaveGallery = ViewBindings.findChildViewById(rootView, id);
+      if (btnSaveGallery == null) {
+        break missingId;
+      }
+
       id = R.id.btnUP;
       Button btnUP = ViewBindings.findChildViewById(rootView, id);
       if (btnUP == null) {
@@ -167,6 +183,12 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rvListObjectsEditor;
+      RecyclerView rvListObjectsEditor = ViewBindings.findChildViewById(rootView, id);
+      if (rvListObjectsEditor == null) {
+        break missingId;
+      }
+
       id = R.id.sliderfontsize;
       Slider sliderfontsize = ViewBindings.findChildViewById(rootView, id);
       if (sliderfontsize == null) {
@@ -180,8 +202,8 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
       }
 
       return new FragmentDisplayRouteBinding((ConstraintLayout) rootView, btnAddCamada,
-          btnChoiceColor, btnDown, btnLeft, btnRight, btnUP, fontSpinner, imageView, imageView2,
-          imgDisplay, sliderfontsize, txtDisplayRoute);
+          btnChoiceColor, btnDown, btnLeft, btnRight, btnSaveGallery, btnUP, fontSpinner, imageView,
+          imageView2, imgDisplay, rvListObjectsEditor, sliderfontsize, txtDisplayRoute);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

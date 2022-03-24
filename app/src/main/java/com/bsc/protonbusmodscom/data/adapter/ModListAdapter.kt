@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bsc.protonbusmodscom.R
 import com.bsc.protonbusmodscom.data.model.ModsData
 import com.bsc.protonbusmodscom.listener.ModsListListener
-import com.bsc.protonbusmodscom.ui.main.MainFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.listmod_item.view.*
 
@@ -27,7 +26,7 @@ class ModListAdapter(private val modList: List<ModsData>, private val context: C
         }catch (e: Exception){
 
         }
-        holder.itemView.fr_thumb_title.text = modList[position].fr_thumb_title
+        holder.itemView.txtTextContent.text = modList[position].fr_thumb_title
         holder.itemView.fr_thumb_desc.text = modList[position].fr_thumb_desc
         holder.itemView.dt_mod_style.text = modList[position].dt_mod_style
         holder.itemView.dt_mod_assembly.text = modList[position].dt_mod_assembly

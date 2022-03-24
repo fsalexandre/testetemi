@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\listobjimage_item.xml",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\layout\\listobjimage_item.xml"
+    },
+    {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\listmod_item.xml",
         "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\layout\\listmod_item.xml"
     },
