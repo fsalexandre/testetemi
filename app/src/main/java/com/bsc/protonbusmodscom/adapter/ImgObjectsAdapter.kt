@@ -18,10 +18,11 @@ class ImgObjectsAdapter(val objImageList: List<DisplayLayersData>, val context: 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.itemView.fr_thumb_img.setImageBitmap(objImageList[position].bitmap_source)
-        holder.itemView.txtTextContent.text = objImageList[position].bitmap_text
+        holder.itemView.txtTextContent.text = "Text: "+objImageList[position].bitmap_text+" - Size: "+objImageList[position].bitmap_textSize.toString()
         holder.itemView.setOnClickListener {
-            listener.onSelectVolume(objImageList[position], it)
+            listener.onSelectObj(objImageList[position], it, position)
         }
     }
 

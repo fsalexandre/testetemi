@@ -4,5 +4,5 @@ import android.view.View
 import com.bsc.protonbusmodscom.data.model.DisplayLayersData
 
 interface objImageListener {
-    fun onSelectVolume(objItem: DisplayLayersData, v: View)
+    fun onSelectObj(objItem: DisplayLayersData, v: View, pos: Int)
 }

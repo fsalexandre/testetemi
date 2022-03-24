@@ -2783,6 +2783,7 @@ drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable busfront
 drawable color_pointer
+drawable colorarrow
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -2809,6 +2810,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable displayicon
 drawable displaytemplate
+drawable downarrow
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_clock_black_24dp
@@ -2826,6 +2828,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable info
 drawable layer
+drawable leftarrow
 drawable m3_appbar_background
 drawable m3_popupmenu_background_overlay
 drawable m3_radiobutton_ripple
@@ -2844,6 +2847,7 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable minusarrow
 drawable modsicon
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
@@ -2869,12 +2873,16 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable one
+drawable plusarrow
+drawable rightarrow
+drawable savearrow
 drawable shape
 drawable test_custom_background
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable two
+drawable uparrow
 drawable youtubelogo
 font batbus
 font busmatrix
@@ -2997,6 +3005,8 @@ id btnChoiceColor
 id btnDisplayRoute
 id btnDown
 id btnLeft
+id btnMinus
+id btnPlus
 id btnPrivacyInfo
 id btnRight
 id btnSaveGallery
@@ -3142,9 +3152,8 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageView
-id imageView2
 id imgDisplay
+id imgDisplayCompile
 id immediateStop
 id included
 id info

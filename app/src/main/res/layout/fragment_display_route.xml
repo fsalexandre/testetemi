@@ -4,37 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.displayroute.DisplayRouteFragment">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="0dp"
-        android:layout_height="550dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/displaytemplate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btnChoiceColor"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/btnMinus"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="5dp"
-        android:layout_marginBottom="10dp"
-        android:text="COLOR"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/btnDown" />
+        android:layout_marginTop="5dp"
+        android:background="@drawable/minusarrow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/minusarrow"
+        app:layout_constraintStart_toEndOf="@+id/btnPlus"
+        app:layout_constraintTop_toBottomOf="@+id/btnUP" />
 
+    <ImageButton
+        android:id="@+id/btnChoiceColor"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/colorarrow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/colorarrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLeft" />
 
+    <ImageButton
+        android:id="@+id/btnLeft"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/leftarrow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/leftarrow"
+        app:layout_constraintEnd_toStartOf="@+id/btnRight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fontSpinner" />
+
+    <ImageButton
+        android:id="@+id/btnRight"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rightarrow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rightarrow"
+        app:layout_constraintEnd_toStartOf="@+id/btnUP"
+        app:layout_constraintStart_toEndOf="@+id/btnLeft"
+        app:layout_constraintTop_toBottomOf="@+id/fontSpinner" />
+
+    <ImageButton
+        android:id="@+id/btnUP"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/uparrow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/uparrow"
+        app:layout_constraintStart_toEndOf="@+id/btnRight"
+        app:layout_constraintTop_toBottomOf="@+id/fontSpinner" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sliderfontsize"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="68dp"
+        android:contentDescription="Font size"
+        android:stepSize="10"
+        android:value="200.0"
+        android:valueFrom="0.0"
+        android:valueTo="400.0"
+        app:layout_constraintStart_toEndOf="@+id/btnDown"
+        app:layout_constraintTop_toBottomOf="@+id/fontSpinner" />
+
+    <ImageButton
+        android:id="@+id/btnSaveGallery"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/savearrow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/savearrow"
+        app:layout_constraintStart_toEndOf="@+id/btnMinus"
+        app:layout_constraintTop_toBottomOf="@+id/btnDown" />
+
+    <ImageButton
+        android:id="@+id/btnDown"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/downarrow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/downarrow"
+        app:layout_constraintStart_toEndOf="@+id/btnUP"
+        app:layout_constraintTop_toBottomOf="@+id/fontSpinner" />
 
     <EditText
         android:id="@+id/txtDisplayRoute"
         android:layout_width="274dp"
         android:layout_height="50dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="12dp"
         android:background="@color/white"
         android:ems="10"
@@ -45,28 +123,17 @@
 
     <Spinner
         android:id="@+id/fontSpinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@color/white"
         android:spinnerMode="dialog"
-        app:layout_constraintBottom_toTopOf="@+id/btnChoiceColor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sliderfontsize"
-        android:layout_width="158dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="Font size"
-        android:stepSize="20.0"
-        android:value="200.0"
-        android:valueFrom="0.0"
-        android:valueTo="400.0"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/btnChoiceColor" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDisplayRoute" />
 
     <Button
         android:id="@+id/btnAddCamada"
@@ -77,61 +144,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtDisplayRoute"
         app:layout_constraintTop_toBottomOf="@+id/imgDisplay" />
-
-    <Button
-        android:id="@+id/btnRight"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="10dp"
-        android:text="RIGHT"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/btnUP"
-        app:layout_constraintStart_toEndOf="@+id/btnLeft" />
-
-    <Button
-        android:id="@+id/btnDown"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="10dp"
-        android:text="DOWN"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/btnUP" />
-
-    <Button
-        android:id="@+id/btnLeft"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="10dp"
-        android:text="LEFT"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/btnRight"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnUP"
-        android:layout_width="40dp"
-        android:layout_height="85dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="10dp"
-        android:text="UP"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/btnRight" />
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
-        android:src="@drawable/busfront"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true" />
 
 
     <ImageView
@@ -146,32 +158,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnSaveGallery"
+    <ImageView
+        android:id="@+id/imgDisplayCompile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="5dp"
-        android:text="Save to Gallery"
-        app:layout_constraintBottom_toTopOf="@+id/sliderfontsize"
-        app:layout_constraintStart_toEndOf="@+id/btnChoiceColor" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape"
+        android:src="@drawable/displaytemplate"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListObjectsEditor"
-        tools:listitem="@layout/listobjimage_item"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:foreground="?android:attr/selectableItemBackground"
         android:background="?android:selectableItemBackground"
-        app:layout_constraintBottom_toTopOf="@+id/fontSpinner"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/txtDisplayRoute" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMinus"
+        tools:listitem="@layout/listobjimage_item" />
+
+    <ImageButton
+        android:id="@+id/btnPlus"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/plusarrow"
+        android:scaleType="centerCrop"
+        android:src="@drawable/plusarrow"
+        app:layout_constraintStart_toEndOf="@+id/btnChoiceColor"
+        app:layout_constraintTop_toBottomOf="@+id/btnRight" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

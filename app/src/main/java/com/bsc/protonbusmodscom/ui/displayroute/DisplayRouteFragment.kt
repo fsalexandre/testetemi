@@ -1,5 +1,7 @@
 package com.bsc.protonbusmodscom.ui.displayroute
 
+import android.content.ContentValues
+import android.content.Intent
 import android.graphics.*
 import android.os.Bundle
 import android.text.Editable
@@ -22,12 +24,22 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.os.Environment
 import android.provider.MediaStore
-import androidx.navigation.Navigation
 import com.bsc.protonbusmodscom.adapter.ImgObjectsAdapter
 import com.bsc.protonbusmodscom.data.model.DisplayLayersData
 import com.bsc.protonbusmodscom.listener.objImageListener
 import com.google.gson.Gson
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
+import android.view.View.OnLongClickListener
+import androidx.databinding.adapters.ViewBindingAdapter
+
+import androidx.databinding.adapters.ViewBindingAdapter.setOnLongClickListener
+import java.io.*
+import android.os.Build
+import android.util.Log
+import java.lang.Exception
 
 
 class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, objImageListener {
@@ -40,12 +52,12 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
     private var objBitmaps: MutableList<DisplayLayersData> = mutableListOf()
     private lateinit var bitmap_source: Bitmap
     private lateinit var bitmap_typeface: Typeface
-    private var bitmap_textSize: Float=0f
+    private var bitmap_textSize: Float=200f
     private var bitmap_color: Int=-1
     private lateinit var bitmap_style: Paint.Style
     private lateinit var bitmap_text: String
-    private var xIMG: Float = 15f
-    private var yIMG: Float = 160f
+    private var bitmap_x: Float = 15f
+    private var bitmap_y: Float = 160f
     private lateinit var objectImageAdapter: ImgObjectsAdapter
 
     override fun onCreateView(
@@ -74,26 +86,29 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
                 bitmap_color = bitmap_color,
                 bitmap_source = bitmap_source,
                 bitmap_style = bitmap_style,
-                bitmap_textSize = bitmap_textSize
+                bitmap_textSize = bitmap_textSize,
+                bitmap_x = bitmap_x,
+                bitmap_y = bitmap_y
             )
             objBitmaps.addAll(listOf(objBitmapItem))
             setObjList()
         }
         btnLeft.setOnClickListener {
-            xIMG-=10
-            generateImage(requireView(), sliderfontsize.value, getSelectedFontTTF(requireView()), xIMG, yIMG)
+            bitmap_x-=10
+            generateImage(requireView(), bitmap_textSize, getSelectedFontTTF(requireView()), bitmap_x, bitmap_y)
         }
         btnRight.setOnClickListener {
-            xIMG+=10
-            generateImage(requireView(), sliderfontsize.value, getSelectedFontTTF(requireView()), xIMG, yIMG)
+            bitmap_x+=10
+            generateImage(requireView(), bitmap_textSize, getSelectedFontTTF(requireView()), bitmap_x, bitmap_y)
         }
+
         btnUP.setOnClickListener {
-            yIMG-=10
-            generateImage(requireView(), sliderfontsize.value, getSelectedFontTTF(requireView()), xIMG, yIMG)
+            bitmap_y-=10
+            generateImage(requireView(), bitmap_textSize, getSelectedFontTTF(requireView()), bitmap_x, bitmap_y)
         }
         btnDown.setOnClickListener {
-            yIMG+=10
-            generateImage(requireView(), sliderfontsize.value, getSelectedFontTTF(requireView()), xIMG, yIMG)
+            bitmap_y+=10
+            generateImage(requireView(), bitmap_textSize, getSelectedFontTTF(requireView()), bitmap_x, bitmap_y)
         }
         btnChoiceColor.setOnClickListener {
             //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
@@ -107,13 +122,21 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
                 .setColorListener { color, colorHex ->
                     // Handle Color Selection
                     this.bitmap_color=color
-                    generateImage(requireView(), sliderfontsize.value, getSelectedFontTTF(requireView()), xIMG, yIMG)
+                    generateImage(requireView(), bitmap_textSize, getSelectedFontTTF(requireView()), bitmap_x, bitmap_y)
                 }
                 .show()
         }
         btnSaveGallery.setOnClickListener {
-            saveImage(imgDisplay.drawable,"0.png")
+            saveImage(imgDisplayCompile.drawable,"1")
         }
+        btnPlus.setOnClickListener {
+            bitmap_textSize+=5
+            generateImage(requireView(), bitmap_textSize, getSelectedFontTTF(requireView()), bitmap_x, bitmap_y)         
+        }
+        btnMinus.setOnClickListener {
+            bitmap_textSize-=5
+            generateImage(requireView(), bitmap_textSize, getSelectedFontTTF(requireView()), bitmap_x, bitmap_y)
+        }        
     }
 
 
@@ -138,7 +161,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
 
         sliderfontsize.addOnChangeListener { slider, value, fromUser ->
             // Responds to when slider's value is changed
-            generateImage(view, value, getSelectedFontTTF(view), xIMG, yIMG)
+            generateImage(view, value, getSelectedFontTTF(view), bitmap_x, bitmap_y)
         }
 
         txtDisplayRoute.addTextChangedListener(object : TextWatcher {
@@ -147,7 +170,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                generateImage(view, sliderfontsize.value, getSelectedFontTTF(view), xIMG, yIMG)
+                generateImage(view, bitmap_textSize, getSelectedFontTTF(view), bitmap_x, bitmap_y)
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -172,19 +195,20 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         val src = BitmapFactory.decodeResource(resources, R.drawable.displaytemplate)
 
         val dest = Bitmap.createBitmap(src.width, src.height, Bitmap.Config.ARGB_8888)
-
+        val dest2 = Bitmap.createBitmap(src.width, src.height, Bitmap.Config.ARGB_8888)
         val yourText = txtDisplayRoute.text.toString()
 
         val cs = Canvas(dest)
+        val cs2 = Canvas(dest2)
         val tPaint = Paint()
         tPaint.typeface = ResourcesCompat.getFont(v.context, ttf)
         tPaint.textSize = fontsize
         tPaint.color = bitmap_color
         tPaint.style = Paint.Style.FILL
         cs.drawText(yourText, x, y, tPaint)
-
+        cs2.drawText(yourText, x, y, tPaint)
         objBitmaps.forEach{
-            cs.drawBitmap(it.bitmap_source, 0f, 0f, tPaint)
+            cs2.drawBitmap(it.bitmap_source, 0f, 0f, tPaint)
         }
 
             bitmap_text = yourText
@@ -192,9 +216,12 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
             bitmap_color = tPaint.color
             bitmap_source = dest
             bitmap_style = tPaint.style
-            bitmap_textSize = fontsize
+            bitmap_textSize = tPaint.textSize
+            bitmap_x = x
+            bitmap_y = y
 
         imgDisplay.setImageBitmap(dest)
+        imgDisplayCompile.setImageBitmap(dest2)
 
     }
 
@@ -220,7 +247,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
     }
 
     private fun updateDisplaybySelectedItem(v: View){
-        generateImage(v, sliderfontsize.value, getSelectedFontTTF(v), xIMG, yIMG)
+        generateImage(v, bitmap_textSize, getSelectedFontTTF(v), bitmap_x, bitmap_y)
     }
 
     fun getSelectedFontTTF(v: View): Int {
@@ -236,14 +263,14 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
     }
 
     // Method to save an image to gallery and return uri
-    private fun saveImage(drawable: Drawable, title:String):Uri{
+    private fun saveImage(drawable: Drawable, title:String){
         // Get the image from drawable resource as drawable object
        // val drawable = ContextCompat.getDrawable(requireContext(),drawable)
-
+        val stream = ByteArrayOutputStream()
         // Get the bitmap from drawable object
         val bitmap = (drawable as BitmapDrawable).bitmap
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         val contentResolver = requireActivity().contentResolver
-        // Save image to gallery
         val savedImageURL = MediaStore.Images.Media.insertImage(
             contentResolver,
             bitmap,
@@ -251,8 +278,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
             "Image of $title"
         )
 
-        // Parse the gallery image url to uri
-        return Uri.parse(savedImageURL)
+
     }
 
     private fun setObjList() {
@@ -265,13 +291,21 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         }
     }
 
-    override fun onSelectVolume(itemObjData: DisplayLayersData, v: View) {
-        val bundle = Bundle()
-        val gson = Gson()
-        val json = gson.toJson(itemObjData)
-//        bundle.putString("b",json)
-//        Navigation.findNavController(v).navigate(R.id.volumeDetails, bundle)
+    override fun onSelectObj(itemObjData: DisplayLayersData, v: View, pos: Int) {
+        bitmap_text = itemObjData.bitmap_text
+        bitmap_typeface = itemObjData.bitmap_typeface
+        bitmap_color = itemObjData.bitmap_color
+        bitmap_source = itemObjData.bitmap_source
+        bitmap_style = itemObjData.bitmap_style
+        bitmap_textSize = itemObjData.bitmap_textSize
+        bitmap_x = itemObjData.bitmap_x
+        bitmap_y = itemObjData.bitmap_y
+        txtDisplayRoute.setText(itemObjData.bitmap_text)
+        objBitmaps.removeAt(pos)
+
     }
+
+
 
 
 }

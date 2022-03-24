@@ -12,5 +12,7 @@ data class DisplayLayersData(
     @SerializedName("bitmap_text") val bitmap_text : String,
     @SerializedName("bitmap_color") val bitmap_color : Int,
     @SerializedName("bitmap_style") val bitmap_style : Paint.Style,
+    @SerializedName("bitmap_x") val bitmap_x : Float,
+    @SerializedName("bitmap_y") val bitmap_y : Float,
 )
 
