@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
 MERGED from [androidx.databinding:databinding-adapters:7.0.3] C:\Users\image\.gradle\caches\transforms-3\fe1c290edfb4dfce945434bfd96be572\transformed\databinding-adapters-7.0.3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.databinding:databinding-ktx:7.0.3] C:\Users\image\.gradle\caches\transforms-3\68c9744cdd6b06fe2abc3bdd042fea02\transformed\jetified-databinding-ktx-7.0.3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.databinding:databinding-runtime:7.0.3] C:\Users\image\.gradle\caches\transforms-3\b51f6e91064d0bb6a308a94c61c0170d\transformed\databinding-runtime-7.0.3\AndroidManifest.xml:17:1-22:12
@@ -92,25 +92,27 @@ MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\image\.gradle\cach
 MERGED from [androidx.sqlite:sqlite:2.1.0] C:\Users\image\.gradle\caches\transforms-3\b652abb8d06e96d8acc03f079642ce79\transformed\sqlite-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\image\.gradle\caches\transforms-3\304f0c1a230cbfe5370dd9e5ae8b5b32\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android:flexbox:2.0.1] C:\Users\image\.gradle\caches\transforms-3\1370fd18f09a2b55f6e5cfe8c138e88f\transformed\jetified-flexbox-2.0.1\AndroidManifest.xml:17:1-26:12
-INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
 	package
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:3:5-39
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:4:5-39
 		INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
 		INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:1-38:12
 		INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:5:5-29:19
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:6:5-31:19
 MERGED from [androidx.window:window:1.0.0] C:\Users\image\.gradle\caches\transforms-3\819f2f7b90fbd5ba24e31d0c9f850932\transformed\jetified-window-1.0.0\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0] C:\Users\image\.gradle\caches\transforms-3\819f2f7b90fbd5ba24e31d0c9f850932\transformed\jetified-window-1.0.0\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.android.material:material:1.6.0-alpha03] C:\Users\image\.gradle\caches\transforms-3\f27ba61b4d10ddf5b4124888008b1aab\transformed\material-1.6.0-alpha03\AndroidManifest.xml:22:5-20
@@ -151,58 +153,60 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\im
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\image\.gradle\caches\transforms-3\34157d7633dd11581fba81240d02bb3e\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\image\.gradle\caches\transforms-3\6af1c8f93ea9fe7b3daf1ac5bcae35b9\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\image\.gradle\caches\transforms-3\6af1c8f93ea9fe7b3daf1ac5bcae35b9\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:25:5-31:19
+	android:requestLegacyExternalStorage
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:14:9-52
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.7.0] C:\Users\image\.gradle\caches\transforms-3\2211b2af80c2040823aefb9bbce90544\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:11:9-35
 	android:label
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:8:9-41
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:9:9-41
 	android:roundIcon
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:9:9-54
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:10:9-54
 	android:icon
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:7:9-43
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:8:9-43
 	android:allowBackup
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:7:9-35
 	android:theme
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:11:9-58
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:12:9-58
 	android:networkSecurityConfig
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:12:9-69
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:13:9-69
 activity#com.bsc.protonbusmodscom.MainActivity
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:15:9-25:20
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:17:9-27:20
 	android:screenOrientation
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:18:13-49
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:20:13-49
 	android:exported
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:19:13-36
 	android:configChanges
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:19:13-74
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:21:13-74
 	android:name
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:16:13-41
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:18:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:20:13-24:29
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:23:17-77
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:25:27-74
 meta-data#com.google.android.gms.ads.APPLICATION_ID
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:26:9-28:69
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:28:9-30:69
 	android:value
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:28:13-67
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:30:13-67
 	android:name
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:27:13-69
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:29:13-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:30:5-67
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:32:5-67
 MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\image\.gradle\caches\transforms-3\80f12d8815aadb0f1da7e0cd3ee71f10\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\image\.gradle\caches\transforms-3\80f12d8815aadb0f1da7e0cd3ee71f10\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] C:\Users\image\.gradle\caches\transforms-3\0436dd1b971676a7a5fea8c82df01842\transformed\jetified-play-services-measurement-sdk-api-18.0.3\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] C:\Users\image\.gradle\caches\transforms-3\0436dd1b971676a7a5fea8c82df01842\transformed\jetified-play-services-measurement-sdk-api-18.0.3\AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:30:22-64
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:32:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:31:5-79
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:33:5-79
 MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\image\.gradle\caches\transforms-3\80f12d8815aadb0f1da7e0cd3ee71f10\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-ads-lite:20.6.0] C:\Users\image\.gradle\caches\transforms-3\80f12d8815aadb0f1da7e0cd3ee71f10\transformed\jetified-play-services-ads-lite-20.6.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] C:\Users\image\.gradle\caches\transforms-3\0436dd1b971676a7a5fea8c82df01842\transformed\jetified-play-services-measurement-sdk-api-18.0.3\AndroidManifest.xml:24:5-79
@@ -210,11 +214,21 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.3] C:
 MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\image\.gradle\caches\transforms-3\e572aee118e90fc798788226cc336e28\transformed\work-runtime-2.7.0\AndroidManifest.xml:26:5-79
 MERGED from [androidx.work:work-runtime:2.7.0] C:\Users\image\.gradle\caches\transforms-3\e572aee118e90fc798788226cc336e28\transformed\work-runtime-2.7.0\AndroidManifest.xml:26:5-79
 	android:name
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:31:22-76
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:33:22-76
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:32:5-80
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:34:5-80
 	android:name
-		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:32:22-78
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:34:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:35:5-79
+	android:name
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:35:22-77
+uses-permission#android.permission.MANAGE_EXTERNAL_STORAGE
+ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:36:5-37:39
+	tools:ignore
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:37:9-37
+	android:name
+		ADDED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml:36:22-79
 uses-sdk
 INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\image\AndroidStudioProjects\BusSimulationChannel\app\src\main\AndroidManifest.xml

@@ -1,3 +1,6 @@
+com/bsc/protonbusmodscom/settings/RequestPermissionHandler.java
+ com.bsc.protonbusmodscom.settings.RequestPermissionHandler
+ com.bsc.protonbusmodscom.settings.RequestPermissionHandler$RequestPermissionListener
 com/bsc/protonbusmodscom/databinding/MainFragmentBinding.java
  com.bsc.protonbusmodscom.databinding.MainFragmentBinding
 com/bsc/protonbusmodscom/databinding/MainActivityBinding.java

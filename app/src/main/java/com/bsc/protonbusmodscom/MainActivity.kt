@@ -17,7 +17,11 @@ import com.google.android.gms.ads.admanager.AdManagerAdView
 import kotlinx.android.synthetic.main.main_activity.*
 
 import android.app.SearchManager
+import android.content.pm.PackageManager
+import android.os.Build
 import android.widget.Switch
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 import androidx.navigation.NavDirections
@@ -28,12 +32,21 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import java.util.*
+import java.util.jar.Manifest
+import android.widget.Toast
+import com.bsc.protonbusmodscom.settings.RequestPermissionHandler
+import com.bsc.protonbusmodscom.settings.RequestPermissionHandler.RequestPermissionListener
+import androidx.annotation.NonNull
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var menudev: Menu
     private var iconMenu=IconStatus.Youtube
+
     enum class IconStatus {
         Youtube, AppIcon
     }
@@ -45,11 +58,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -70,6 +86,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun openDisplayRouteGen(){
 
+
+
+
+
+
         val myFragment: DisplayRouteFragment? =
             supportFragmentManager.findFragmentByTag(ScreenStatus.DISPLAY_ROUTE_SCREEN.name) as DisplayRouteFragment?
         if (myFragment != null && myFragment.isVisible) {
@@ -88,6 +109,10 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
+
+
 
     private fun openExternalYoutube() {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/bussimulationchannel?sub_confirmation=1"))

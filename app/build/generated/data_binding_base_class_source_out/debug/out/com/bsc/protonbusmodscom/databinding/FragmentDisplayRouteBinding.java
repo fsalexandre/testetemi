@@ -4,11 +4,11 @@ package com.bsc.protonbusmodscom.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.bsc.protonbusmodscom.R;
-import com.google.android.material.slider.Slider;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -26,7 +25,7 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnAddCamada;
+  public final ImageButton btnAddCamada;
 
   @NonNull
   public final ImageButton btnChoiceColor;
@@ -65,19 +64,25 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
   public final RecyclerView rvListObjectsEditor;
 
   @NonNull
-  public final Slider sliderfontsize;
+  public final TextView textView;
+
+  @NonNull
+  public final TextView textView2;
+
+  @NonNull
+  public final TextView textView3;
 
   @NonNull
   public final EditText txtDisplayRoute;
 
   private FragmentDisplayRouteBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnAddCamada, @NonNull ImageButton btnChoiceColor,
+      @NonNull ImageButton btnAddCamada, @NonNull ImageButton btnChoiceColor,
       @NonNull ImageButton btnDown, @NonNull ImageButton btnLeft, @NonNull ImageButton btnMinus,
       @NonNull ImageButton btnPlus, @NonNull ImageButton btnRight,
       @NonNull ImageButton btnSaveGallery, @NonNull ImageButton btnUP, @NonNull Spinner fontSpinner,
       @NonNull ImageView imgDisplay, @NonNull ImageView imgDisplayCompile,
-      @NonNull RecyclerView rvListObjectsEditor, @NonNull Slider sliderfontsize,
-      @NonNull EditText txtDisplayRoute) {
+      @NonNull RecyclerView rvListObjectsEditor, @NonNull TextView textView,
+      @NonNull TextView textView2, @NonNull TextView textView3, @NonNull EditText txtDisplayRoute) {
     this.rootView = rootView;
     this.btnAddCamada = btnAddCamada;
     this.btnChoiceColor = btnChoiceColor;
@@ -92,7 +97,9 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
     this.imgDisplay = imgDisplay;
     this.imgDisplayCompile = imgDisplayCompile;
     this.rvListObjectsEditor = rvListObjectsEditor;
-    this.sliderfontsize = sliderfontsize;
+    this.textView = textView;
+    this.textView2 = textView2;
+    this.textView3 = textView3;
     this.txtDisplayRoute = txtDisplayRoute;
   }
 
@@ -124,7 +131,7 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnAddCamada;
-      Button btnAddCamada = ViewBindings.findChildViewById(rootView, id);
+      ImageButton btnAddCamada = ViewBindings.findChildViewById(rootView, id);
       if (btnAddCamada == null) {
         break missingId;
       }
@@ -201,9 +208,21 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.sliderfontsize;
-      Slider sliderfontsize = ViewBindings.findChildViewById(rootView, id);
-      if (sliderfontsize == null) {
+      id = R.id.textView;
+      TextView textView = ViewBindings.findChildViewById(rootView, id);
+      if (textView == null) {
+        break missingId;
+      }
+
+      id = R.id.textView2;
+      TextView textView2 = ViewBindings.findChildViewById(rootView, id);
+      if (textView2 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView3;
+      TextView textView3 = ViewBindings.findChildViewById(rootView, id);
+      if (textView3 == null) {
         break missingId;
       }
 
@@ -215,8 +234,8 @@ public final class FragmentDisplayRouteBinding implements ViewBinding {
 
       return new FragmentDisplayRouteBinding((ConstraintLayout) rootView, btnAddCamada,
           btnChoiceColor, btnDown, btnLeft, btnMinus, btnPlus, btnRight, btnSaveGallery, btnUP,
-          fontSpinner, imgDisplay, imgDisplayCompile, rvListObjectsEditor, sliderfontsize,
-          txtDisplayRoute);
+          fontSpinner, imgDisplay, imgDisplayCompile, rvListObjectsEditor, textView, textView2,
+          textView3, txtDisplayRoute);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

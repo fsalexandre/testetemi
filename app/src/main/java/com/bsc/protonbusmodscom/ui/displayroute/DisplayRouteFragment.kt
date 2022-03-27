@@ -23,6 +23,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
@@ -38,8 +39,18 @@ import androidx.databinding.adapters.ViewBindingAdapter
 import androidx.databinding.adapters.ViewBindingAdapter.setOnLongClickListener
 import java.io.*
 import android.os.Build
+import android.provider.Settings
 import android.util.Log
+import com.bsc.protonbusmodscom.settings.RequestPermissionHandler
 import java.lang.Exception
+import android.widget.Toast
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.net.toUri
+import androidx.core.view.drawToBitmap
+import androidx.core.widget.doOnTextChanged
+import com.bsc.protonbusmodscom.settings.settingsURL
+import java.io.File.pathSeparator
+import java.math.RoundingMode.valueOf
 
 
 class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, objImageListener {
@@ -59,12 +70,14 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
     private var bitmap_x: Float = 15f
     private var bitmap_y: Float = 160f
     private lateinit var objectImageAdapter: ImgObjectsAdapter
+    private lateinit var mRequestPermissionHandler: RequestPermissionHandler
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        mRequestPermissionHandler = RequestPermissionHandler()
         return inflater.inflate(R.layout.fragment_display_route, container, false)
     }
 
@@ -76,6 +89,38 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         txtDisplayRoute.setText("2022 WELCOME!!")
     }
 
+    override fun onResume() {
+        super.onResume()
+        mRequestPermissionHandler.requestPermission(requireActivity(), arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ), 123, object : RequestPermissionHandler.RequestPermissionListener {
+            override fun onSuccess() {
+//                Toast.makeText(
+//                    this@MainActivity,
+//                    "Request permission success",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+            }
+
+            override fun onFailed() {
+                Toast.makeText(
+                    requireContext(),
+                    "Request permission failed, try allow again...",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        mRequestPermissionHandler.onRequestPermissionsResult(
+            requestCode, permissions,
+            grantResults
+        )
+    }
 
 
     private fun setButtons(){
@@ -92,7 +137,13 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
             )
             objBitmaps.addAll(listOf(objBitmapItem))
             setObjList()
+            txtDisplayRoute.requestFocus()
+            txtDisplayRoute.setText("")
+            btnAddCamada.setImageResource(R.drawable.addarrow)
+
         }
+
+
         btnLeft.setOnClickListener {
             bitmap_x-=10
             generateImage(requireView(), bitmap_textSize, getSelectedFontTTF(requireView()), bitmap_x, bitmap_y)
@@ -127,7 +178,8 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
                 .show()
         }
         btnSaveGallery.setOnClickListener {
-            saveImage(imgDisplayCompile.drawable,"1")
+            //saveImage(imgDisplayCompile.drawable,"null")
+            saveImageToStorage(imgDisplayCompile.drawable.toBitmap())
         }
         btnPlus.setOnClickListener {
             bitmap_textSize+=5
@@ -147,38 +199,8 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         fontSpinner.onItemSelectedListener = this
 
 
-        sliderfontsize.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
-            override fun onStartTrackingTouch(slider: Slider) {
-                // Responds to when slider's touch event is being started
 
-            }
-
-            override fun onStopTrackingTouch(slider: Slider) {
-                // Responds to when slider's touch event is being stopped
-
-            }
-        })
-
-        sliderfontsize.addOnChangeListener { slider, value, fromUser ->
-            // Responds to when slider's value is changed
-            generateImage(view, value, getSelectedFontTTF(view), bitmap_x, bitmap_y)
-        }
-
-        txtDisplayRoute.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                generateImage(view, bitmap_textSize, getSelectedFontTTF(view), bitmap_x, bitmap_y)
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-
-            }
-
-        })
-
+        txtDisplayRoute.doOnTextChanged { text, start, before, count -> generateImage(view, bitmap_textSize, getSelectedFontTTF(view), bitmap_x, bitmap_y) }
 
 
         ArrayAdapter.createFromResource(
@@ -191,7 +213,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         }
     }
 
-    fun generateImage(v: View, fontsize: Float, ttf: Int, x: Float, y: Float){
+    private fun generateImage(v: View, fontsize: Float, ttf: Int, x: Float, y: Float){
         val src = BitmapFactory.decodeResource(resources, R.drawable.displaytemplate)
 
         val dest = Bitmap.createBitmap(src.width, src.height, Bitmap.Config.ARGB_8888)
@@ -225,17 +247,6 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
 
     }
 
-    private fun createSingleImageFromMultipleImages(
-        firstImage: Bitmap,
-        secondImage: Bitmap
-    ): Bitmap? {
-        val result = Bitmap.createBitmap(firstImage.width, firstImage.height, firstImage.config)
-        val canvas = Canvas(result)
-        canvas.drawBitmap(firstImage, 0f, 0f, null)
-        canvas.drawBitmap(secondImage, 0f, 0f, null)
-        return result
-    }
-
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
 
         this.view?.let { updateDisplaybySelectedItem(it) }
@@ -250,7 +261,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         generateImage(v, bitmap_textSize, getSelectedFontTTF(v), bitmap_x, bitmap_y)
     }
 
-    fun getSelectedFontTTF(v: View): Int {
+    private fun getSelectedFontTTF(v: View): Int {
 
 
         when(fontSpinner.selectedItem.toString()){
@@ -262,23 +273,40 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         return 0
     }
 
-    // Method to save an image to gallery and return uri
-    private fun saveImage(drawable: Drawable, title:String){
-        // Get the image from drawable resource as drawable object
-       // val drawable = ContextCompat.getDrawable(requireContext(),drawable)
-        val stream = ByteArrayOutputStream()
-        // Get the bitmap from drawable object
-        val bitmap = (drawable as BitmapDrawable).bitmap
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+    private fun saveImageToStorage(bitmap: Bitmap) {
+
         val contentResolver = requireActivity().contentResolver
-        val savedImageURL = MediaStore.Images.Media.insertImage(
-            contentResolver,
-            bitmap,
-            title,
-            "Image of $title"
-        )
+        lateinit var filescan: File
+        val imageOutStream: OutputStream = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val imgDirAux = Environment.DIRECTORY_DCIM+ File.separator + "BSC Display Routes"
+            val imgAux = File(imgDirAux,"image_screenshot.png")
+            filescan = imgAux
+            val values = ContentValues()
+            values.put(MediaStore.Images.Media.DISPLAY_NAME,"image_screenshot.png")
+            values.put(MediaStore.Images.Media.MIME_TYPE, "image/png")
+            values.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_DCIM+ File.separator + "BSC Display Routes")
+            val uri: Uri? = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+            contentResolver.openOutputStream(uri!!)!!
+
+        } else {
+            val imagesDir =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).toString() + File.separator + "/BSC Display Routes"
+            val image = File(imagesDir, "image_screenshot.png")
+
+            val root = Environment.getExternalStorageDirectory()
+            val dir = File(root.absolutePath.toString() + "/DCIM/BSC Display Routes")
+            dir.mkdirs()
+
+            filescan = image
+            FileOutputStream(image)
+        }
+
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, imageOutStream)
+        imageOutStream.close()
 
 
+        MediaScannerConnection.scanFile(context, arrayOf(filescan.toString()),
+            null, null)
     }
 
     private fun setObjList() {
@@ -302,8 +330,11 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         bitmap_y = itemObjData.bitmap_y
         txtDisplayRoute.setText(itemObjData.bitmap_text)
         objBitmaps.removeAt(pos)
+        btnAddCamada.setImageResource(R.drawable.updatearrow)
 
     }
+
+
 
 
 

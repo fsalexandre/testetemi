@@ -16,6 +16,18 @@
         "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\two.png"
     },
     {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_uparrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\uparrow.png"
+    },
+    {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_colorarrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\colorarrow.png"
+    },
+    {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_rightarrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\rightarrow.png"
+    },
+    {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\font_batbus.ttf.flat",
         "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\font\\batbus.ttf"
     },
@@ -76,12 +88,36 @@
         "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable-v24\\displaytemplate.png"
     },
     {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_leftarrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\leftarrow.png"
+    },
+    {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_downarrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\downarrow.png"
+    },
+    {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_savearrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\savearrow.png"
+    },
+    {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_addarrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\addarrow.png"
+    },
+    {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\font_mtba216.ttf.flat",
         "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\font\\mtba216.ttf"
+    },
+    {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_updatearrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\updatearrow.png"
+    },
+    {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_spinnerborder.xml.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\spinnerborder.xml"
     },
     {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_display_route.xml.flat",
@@ -90,6 +126,10 @@
     {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_plusarrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\plusarrow.png"
     },
     {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_modsicon.png.flat",
@@ -138,6 +178,10 @@
     {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher.png.flat",
         "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\drawable_minusarrow.png.flat",
+        "source": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\src\\main\\res\\drawable\\minusarrow.png"
     },
     {
         "merged": "C:\\Users\\image\\AndroidStudioProjects\\BusSimulationChannel\\app\\build\\intermediates\\merged_res\\debug\\font_mtbadisplay.ttf.flat",
