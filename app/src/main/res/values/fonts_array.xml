@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="planets_array">
+    <string-array name="fonts_array">
         <item>Bat Bus Readout</item>
         <item>BusMatrix Condensed</item>
+        <item>Dimelthoz 11x96</item>
+        <item>Inova 13x7</item>
+        <item>Led 8x6</item>
+        <item>Marcopolo 13x9</item>
         <item>MBTA Bus Route Display! 216</item>
         <item>MBTA Bus Route Display</item>
+        <item>Mobitec 13x9</item>
+        <item>Lightdot 13x6</item>
+        <item>Lightdot 13x9</item>
+        <item>Lightdot 16x10</item>
     </string-array>
 </resources>

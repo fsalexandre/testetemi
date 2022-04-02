@@ -1,45 +1,22 @@
 package com.bsc.protonbusmodscom
 
-import android.app.PendingIntent.getActivity
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.bsc.protonbusmodscom.ui.main.MainFragment
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
-import com.google.ads.AdSize.BANNER
-import com.google.android.gms.ads.*
-import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.admanager.AdManagerAdView
-import kotlinx.android.synthetic.main.main_activity.*
-
-import android.app.SearchManager
-import android.content.pm.PackageManager
-import android.os.Build
-import android.widget.Switch
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-
-import androidx.navigation.NavDirections
 import com.bsc.protonbusmodscom.ui.displayroute.DisplayRouteFragment
-
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import com.bsc.protonbusmodscom.ui.main.MainFragment
+import com.google.android.gms.ads.*
+import kotlinx.android.synthetic.main.main_activity.*
+import java.security.SecureRandom
+import java.security.cert.CertificateException
+import java.security.cert.X509Certificate
 import java.util.*
-import java.util.jar.Manifest
-import android.widget.Toast
-import com.bsc.protonbusmodscom.settings.RequestPermissionHandler
-import com.bsc.protonbusmodscom.settings.RequestPermissionHandler.RequestPermissionListener
-import androidx.annotation.NonNull
-
-
-
+import javax.net.ssl.*
 
 
 class MainActivity : AppCompatActivity() {

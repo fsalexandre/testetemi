@@ -11,8 +11,8 @@ android {
         applicationId "com.bsc.protonbusmodscom"
         minSdk 21
         targetSdk 31
-        versionCode 5
-        versionName "2.2"
+        versionCode 10
+        versionName "3.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -70,6 +70,6 @@ dependencies {
 
     //new material design
     implementation "com.google.android.material:material:1.6.0-alpha03"
-
+    implementation 'org.conscrypt:conscrypt-android:2.2.1'
 
 }

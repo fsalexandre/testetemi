@@ -1,5 +1,6 @@
 package com.bsc.protonbusmodscom.ui.displayroute
 
+import android.R.attr
 import android.content.ContentValues
 import android.content.Intent
 import android.graphics.*
@@ -51,6 +52,10 @@ import androidx.core.widget.doOnTextChanged
 import com.bsc.protonbusmodscom.settings.settingsURL
 import java.io.File.pathSeparator
 import java.math.RoundingMode.valueOf
+import android.R.attr.path
+import android.R.attr.path
+import com.google.android.gms.ads.RequestConfiguration
+import java.util.*
 
 
 class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, objImageListener {
@@ -86,7 +91,10 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         setInitialData()
 
         setButtons()
-        txtDisplayRoute.setText("2022 WELCOME!!")
+        txtDisplayRoute.setText("1234 SAMPLE")
+        txtDisplayRoute.requestFocus()
+        testFunctions()
+
     }
 
     override fun onResume() {
@@ -205,12 +213,13 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
 
         ArrayAdapter.createFromResource(
             view.context,
-            R.array.planets_array,
+            R.array.fonts_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             fontSpinner.adapter = adapter
         }
+
     }
 
     private fun generateImage(v: View, fontsize: Float, ttf: Int, x: Float, y: Float){
@@ -261,6 +270,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         generateImage(v, bitmap_textSize, getSelectedFontTTF(v), bitmap_x, bitmap_y)
     }
 
+
     private fun getSelectedFontTTF(v: View): Int {
 
 
@@ -269,7 +279,17 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
             "BusMatrix Condensed" -> return R.font.busmatrix
             "MBTA Bus Route Display! 216" -> return R.font.mtba216
             "MBTA Bus Route Display" -> return R.font.mtbadisplay
+
+            "Led 8x6" -> return R.font.led8x6
+            "Mobitec 13x9" -> return R.font.mobitec13x9
+            "Marcopolo 13x9" -> return R.font.marcopolo13x9
+            "Dimelthoz 11x96" -> return R.font.dimelthoz11x96
+            "Lightdot 16x10" -> return R.font.lightdot16x10
+            "Lightdot 13x9" -> return R.font.lightdot13x9
+            "Inova 13x7" -> return R.font.inova13x7
+            "Lightdot 13x6" -> return R.font.lightdot13x6
         }
+
         return 0
     }
 
@@ -277,12 +297,13 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
 
         val contentResolver = requireActivity().contentResolver
         lateinit var filescan: File
+        val filename = "BSC_"+System.currentTimeMillis().toString()+".png"
         val imageOutStream: OutputStream = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val imgDirAux = Environment.DIRECTORY_DCIM+ File.separator + "BSC Display Routes"
-            val imgAux = File(imgDirAux,"image_screenshot.png")
+            val imgAux = File(imgDirAux,filename)
             filescan = imgAux
             val values = ContentValues()
-            values.put(MediaStore.Images.Media.DISPLAY_NAME,"image_screenshot.png")
+            values.put(MediaStore.Images.Media.DISPLAY_NAME,filename)
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/png")
             values.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_DCIM+ File.separator + "BSC Display Routes")
             val uri: Uri? = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
@@ -291,7 +312,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         } else {
             val imagesDir =
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).toString() + File.separator + "/BSC Display Routes"
-            val image = File(imagesDir, "image_screenshot.png")
+            val image = File(imagesDir, filename)
 
             val root = Environment.getExternalStorageDirectory()
             val dir = File(root.absolutePath.toString() + "/DCIM/BSC Display Routes")
@@ -307,6 +328,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
 
         MediaScannerConnection.scanFile(context, arrayOf(filescan.toString()),
             null, null)
+        Toast.makeText(requireContext(),"Display Route saved in Images Gallery",Toast.LENGTH_LONG).show()
     }
 
     private fun setObjList() {
@@ -330,12 +352,29 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         bitmap_y = itemObjData.bitmap_y
         txtDisplayRoute.setText(itemObjData.bitmap_text)
         objBitmaps.removeAt(pos)
+        objectImageAdapter.notifyDataSetChanged()
         btnAddCamada.setImageResource(R.drawable.updatearrow)
 
     }
 
 
+    private fun testFunctions(){
+        val folderContext: String = "dest"
+        Log.d("folders",Environment.getDataDirectory().toString()+ File.separator +"com.viamep.pbsu/files"+ File.separator + folderContext)
 
+        val file = File("/storage/emulated/0/Android/"+Environment.getDataDirectory().toString()+ File.separator +"com.viamep.pbsu/files"+ File.separator + folderContext)
+        //val file = File("/Android/"+Environment.getDataDirectory().toString())
+        val files = file.list()
+        if (file.isDirectory) {
+            //  files exist
+            Log.d("folder","Encontrei o Proton Bus @ "+file.absolutePath)
+        }else{
+            Log.d("folder","achei nao")
+            file.mkdir()
+        }
+
+
+    }
 
 
 
