@@ -1,64 +1,40 @@
 package com.bsc.protonbusmodscom.ui.displayroute
 
-import android.R.attr
 import android.content.ContentValues
-import android.content.Intent
 import android.graphics.*
+import android.media.MediaScannerConnection
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
+import android.os.Environment
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import com.bsc.protonbusmodscom.R
+import com.bsc.protonbusmodscom.adapter.ImgObjectsAdapter
+import com.bsc.protonbusmodscom.data.adapter.FontListAdapter
+import com.bsc.protonbusmodscom.data.model.DisplayLayersData
+import com.bsc.protonbusmodscom.data.model.FontList
+import com.bsc.protonbusmodscom.listener.objImageListener
+import com.bsc.protonbusmodscom.settings.RequestPermissionHandler
 import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
-import com.google.android.material.slider.Slider
 import kotlinx.android.synthetic.main.fragment_display_route.*
+import kotlinx.android.synthetic.main.fragment_display_route.view.*
 
-import android.graphics.drawable.Drawable
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
-import android.media.MediaScannerConnection
-import android.net.Uri
-import android.os.Environment
-import android.provider.MediaStore
-import com.bsc.protonbusmodscom.adapter.ImgObjectsAdapter
-import com.bsc.protonbusmodscom.data.model.DisplayLayersData
-import com.bsc.protonbusmodscom.listener.objImageListener
-import com.google.gson.Gson
-import android.view.MotionEvent
-import android.view.View.OnTouchListener
-import android.view.View.OnLongClickListener
-import androidx.databinding.adapters.ViewBindingAdapter
-
-import androidx.databinding.adapters.ViewBindingAdapter.setOnLongClickListener
 import java.io.*
-import android.os.Build
-import android.provider.Settings
-import android.util.Log
-import com.bsc.protonbusmodscom.settings.RequestPermissionHandler
-import java.lang.Exception
-import android.widget.Toast
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.net.toUri
-import androidx.core.view.drawToBitmap
-import androidx.core.widget.doOnTextChanged
-import com.bsc.protonbusmodscom.settings.settingsURL
-import java.io.File.pathSeparator
-import java.math.RoundingMode.valueOf
-import android.R.attr.path
-import android.R.attr.path
-import com.google.android.gms.ads.RequestConfiguration
 import java.util.*
 
 
-class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, objImageListener {
+class DisplayRouteFragment : Fragment(), objImageListener {
 
     companion object {
         fun newInstance() = DisplayRouteFragment()
@@ -76,6 +52,8 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
     private var bitmap_y: Float = 160f
     private lateinit var objectImageAdapter: ImgObjectsAdapter
     private lateinit var mRequestPermissionHandler: RequestPermissionHandler
+    private  var fontList: MutableList<FontList> = mutableListOf()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,10 +67,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setInitialData()
-
         setButtons()
-        txtDisplayRoute.setText("1234 SAMPLE")
-        txtDisplayRoute.requestFocus()
         testFunctions()
 
     }
@@ -204,21 +179,21 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         val view = requireView()
 
 
-        fontSpinner.onItemSelectedListener = this
-
-
-
         txtDisplayRoute.doOnTextChanged { text, start, before, count -> generateImage(view, bitmap_textSize, getSelectedFontTTF(view), bitmap_x, bitmap_y) }
 
 
-        ArrayAdapter.createFromResource(
-            view.context,
-            R.array.fonts_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            fontSpinner.adapter = adapter
-        }
+//        ArrayAdapter.createFromResource(
+//            view.context,
+//            R.array.fonts_array,
+//            android.R.layout.simple_spinner_item
+//        ).also { adapter ->
+//
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            fontSpinner.adapter = adapter
+//        }
+
+        setupFontSpinner()
+
 
     }
 
@@ -233,6 +208,7 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
         val cs2 = Canvas(dest2)
         val tPaint = Paint()
         tPaint.typeface = ResourcesCompat.getFont(v.context, ttf)
+        //tPaint.typeface = ResourcesCompat.getFont(v.context, R.font.lightdot13x6)
         tPaint.textSize = fontsize
         tPaint.color = bitmap_color
         tPaint.style = Paint.Style.FILL
@@ -256,15 +232,50 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
 
     }
 
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+    private fun setupFontSpinner() {
+        val strings = resources.getIntArray(R.array.fonts_array)
+        for (i in strings.indices-1) {
+            val itemAux = FontList(
+                id_font = strings[i],
+                desc_font = resources.getStringArray(R.array.fonts_array)[i].replace("res/font/","").replace(".ttf","")
+            )
+            fontList.add(itemAux)
+        }
 
-        this.view?.let { updateDisplaybySelectedItem(it) }
+        val spinnerAdapter = FontListAdapter(
+            requireContext(),
+            android.R.layout.simple_spinner_item,
+            values = fontList
+        )
 
+        // Specify dropdown layout style - simple list view with 1 item per line
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+
+        // Apply the adapter to the spinner
+        fontSpinner.adapter = spinnerAdapter
+        // spinner is referenced spinner by finViewById.
+        fontSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                view?.let { updateDisplaybySelectedItem(view) }
+                Log.d("position",position.toString())
+            }
+
+            // Because AdapterView is an abstract class, onNothingSelected must be defined
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // code for nothing selected in dropdown
+            }
+
+        }
+        txtDisplayRoute.setText("1234 SAMPLE")
+        txtDisplayRoute.requestFocus()
     }
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {
 
-    }
 
     private fun updateDisplaybySelectedItem(v: View){
         generateImage(v, bitmap_textSize, getSelectedFontTTF(v), bitmap_x, bitmap_y)
@@ -272,14 +283,13 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
 
 
     private fun getSelectedFontTTF(v: View): Int {
+        val selectedItem: FontList = fontSpinner.selectedItem as FontList
 
-
-        when(fontSpinner.selectedItem.toString()){
+        when(selectedItem.desc_font){
             "Bat Bus Readout" -> return R.font.batbus
             "BusMatrix Condensed" -> return R.font.busmatrix
             "MBTA Bus Route Display! 216" -> return R.font.mtba216
             "MBTA Bus Route Display" -> return R.font.mtbadisplay
-
             "Led 8x6" -> return R.font.led8x6
             "Mobitec 13x9" -> return R.font.mobitec13x9
             "Marcopolo 13x9" -> return R.font.marcopolo13x9
@@ -288,9 +298,10 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
             "Lightdot 13x9" -> return R.font.lightdot13x9
             "Inova 13x7" -> return R.font.inova13x7
             "Lightdot 13x6" -> return R.font.lightdot13x6
+            "Lumiplan Duhamel" -> return R.font.lumiplanduhamel
         }
 
-        return 0
+        return R.font.batbus
     }
 
     private fun saveImageToStorage(bitmap: Bitmap) {
@@ -375,7 +386,5 @@ class DisplayRouteFragment : Fragment(), AdapterView.OnItemSelectedListener, obj
 
 
     }
-
-
 
 }
