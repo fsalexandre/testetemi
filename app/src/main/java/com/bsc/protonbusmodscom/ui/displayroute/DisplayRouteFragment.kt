@@ -28,11 +28,8 @@ import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.github.dhaval2404.colorpicker.model.ColorSwatch
 import kotlinx.android.synthetic.main.fragment_display_route.*
-import kotlinx.android.synthetic.main.fragment_display_route.view.*
 
 import java.io.*
-import java.util.*
-
 
 class DisplayRouteFragment : Fragment(), objImageListener {
 
