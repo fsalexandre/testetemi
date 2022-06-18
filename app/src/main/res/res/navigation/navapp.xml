@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MainFragment"
-        android:name="com.bsc.protonbusmodscom.ui.main.MainFragment"
+        android:name="com.bsc.testtemi.ui.setor.SetorFragment"
         tools:layout="@layout/main_fragment">
 
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/DisplayRouteFragment"
-        android:name="com.bsc.protonbusmodscom.ui.displayroute.DisplayRouteFragment"
+        android:name="com.bsc.testtemi.ui.displayroute.DisplayRouteFragment"
         tools:layout="@layout/fragment_display_route">
 
         <action

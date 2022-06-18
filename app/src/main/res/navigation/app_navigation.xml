@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/SetorFragment">
+
+    <fragment
+        android:id="@+id/SetorFragment"
+        android:name="com.bsc.testtemi.ui.setor.SetorFragment"
+        android:label="SetorFragment"
+        tools:layout="@layout/setor_fragment" >
+        <action
+            android:id="@+id/action_SetorFragment_to_SubSetorFragment"
+            app:destination="@id/SubSetorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SubSetorFragment"
+        android:name="com.bsc.testtemi.ui.subsetor.SubSetorFragment"
+        android:label="SubSetorFragment"
+        tools:layout="@layout/subsetor_fragment" >
+        <action
+            android:id="@+id/action_SubSetorFragment_to_produtosFragment"
+            app:destination="@id/ProdutosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ProdutosFragment"
+        android:name="com.bsc.testtemi.ui.produtos.ProdutosFragment"
+        android:label="produtos_fragment"
+        tools:layout="@layout/produtos_fragment" />
+</navigation>
