@@ -15,8 +15,10 @@ import com.bsc.testtemi.data.model.ListProdutos
 import com.bsc.testtemi.data.model.ListSubSetor
 import com.bsc.testtemi.ui.adapter.ProdutosListAdapter
 import com.bsc.testtemi.ui.listener.ProdutosListListener
+import com.bsc.testtemi.ui.subsetor.SubSetorViewModel
 import kotlinx.android.synthetic.main.produtos_fragment.*
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ProdutosFragment: Fragment(), ProdutosListListener {
@@ -25,7 +27,7 @@ class ProdutosFragment: Fragment(), ProdutosListListener {
     private lateinit var ProdutosAdapter: ProdutosListAdapter
     private var strSubSetor: String? = null
     private var strQuery: String? = null
-    private lateinit var viewModel: ProdutosViewModel
+    private val viewModel: ProdutosViewModel by viewModel()
 
     companion object {
         fun newInstance() = ProdutosFragment()
@@ -33,60 +35,51 @@ class ProdutosFragment: Fragment(), ProdutosListListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
             arguments?.let {
                 strSubSetor = it.getString("strSubSetor")
                 strQuery = it.getString("strQuery")
-
             }
-
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setObservers()
         return inflater.inflate(R.layout.produtos_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[ProdutosViewModel::class.java]
         if (savedInstanceState != null) {
             val savedList=savedInstanceState.getSerializable("listState") as Collection<ListProdutos>
             ProdutosListAux.addAll(savedList)
         }
 
-        if (ProdutosListAux.size == 0) {
-            setObservers()
-            lifecycleScope.launch {
-                if (strSubSetor != null) {
-                    strSubSetor?.let { viewModel.requestProdutos(it) }
-                } else {
-                    strQuery?.let {
-                        viewModel.requestProdutosbyQuery(it)
-                    }
-                }
-            }
+        if (strSubSetor != null) {
+            strSubSetor?.let { viewModel.requestProdutos(it) }
         } else {
-            setProdutosList()
+            strQuery?.let {
+                viewModel.requestProdutosbyQuery(it)
+            }
         }
+
     }
 
 
     private fun setObservers() {
 
-        viewModel.returnProdutos().observe(viewLifecycleOwner) {
+        viewModel.produtoList.observe(viewLifecycleOwner) {
             it?.apply {
+                ProdutosListAux.clear()
                 ProdutosListAux.addAll(it)
                 setProdutosList()
             }
         }
 
-        viewModel.returnProdutosbyQuery().observe(viewLifecycleOwner) {
+        viewModel.produtoByQueryList.observe(viewLifecycleOwner) {
             it?.apply {
-                if(ProdutosListAux.size>0){ProdutosListAux.clear()}
+                ProdutosListAux.clear()
                 ProdutosListAux.addAll(it)
                 setProdutosList()
             }
@@ -94,14 +87,7 @@ class ProdutosFragment: Fragment(), ProdutosListListener {
     }
 
     private fun setProdutosList() {
-
-        if (rvListProdutos.adapter == null) {
-            rvListProdutos.adapter =
-                ProdutosListAdapter(ProdutosListAux, this.requireContext(), this)
-        } else {
-            ProdutosAdapter.notifyDataSetChanged()
-        }
-
+        rvListProdutos.adapter = ProdutosListAdapter(ProdutosListAux, this.requireContext(), this)
     }
 
     private inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =

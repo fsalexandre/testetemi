@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bus_Simulation_Channel.iml" filepath="$PROJECT_DIR$/.idea/modules/Bus_Simulation_Channel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Teste_Alexandre.iml" filepath="$PROJECT_DIR$/.idea/modules/Teste_Alexandre.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.unitTest.iml" />
     </modules>
   </component>
 </project>

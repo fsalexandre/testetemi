@@ -20,7 +20,7 @@ class ProdutosListAdapter(private val produtosList: List<ListProdutos>, private 
 
         holder.itemView.txtMarca.text = produtosList[position].desc_marca
         holder.itemView.txtProduto.text = produtosList[position].desc_produto
-        holder.itemView.txtSKU.text = produtosList[position].desc_sku.toString()
+        holder.itemView.txtSKU.text = produtosList[position].desc_sku
         holder.itemView.setOnClickListener {
             listener.onSelectVolume(produtosList[position], it)
         }

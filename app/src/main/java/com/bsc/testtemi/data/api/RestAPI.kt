@@ -5,6 +5,8 @@ import com.bsc.testtemi.data.model.ListSetor
 import com.bsc.testtemi.data.model.ListSubSetor
 import com.bsc.testtemi.settings.settingsURL
 import retrofit2.Call
+import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
