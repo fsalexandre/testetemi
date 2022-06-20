@@ -13,6 +13,6 @@ Observers
 
 Arquitetura:
 
-MVVM (Model View View Model)
+MVVM (Model View Viewmodel)
 
 Clean Arch (organização por packages)
