@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.dhaval2404:colorpicker:2.0@aar">
     <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/55cce650261f7c6362cc23e94a338356/transformed/jetified-colorpicker-2.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/55cce650261f7c6362cc23e94a338356/transformed/jetified-colorpicker-2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/55cce650261f7c6362cc23e94a338356/transformed/jetified-colorpicker-2.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/55cce650261f7c6362cc23e94a338356/transformed/jetified-colorpicker-2.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.dhaval2404/colorpicker/2.0/e9fbf48a63cc7bf677c066d5ee1ae305255757d7/colorpicker-2.0-javadoc.jar!/" />

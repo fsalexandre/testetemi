@@ -15,22 +15,17 @@ import retrofit2.Response
 
 class SetorViewModel (private val repository: Repository) : ViewModel() {
 
-    val setorList = MutableLiveData<List<ListSetor>>()
+    private val _setorListState = MutableStateFlow(emptyList<ListSetor>())
+    val setorListState: StateFlow<List<ListSetor>>
+        get() = _setorListState
+
     val errorMessage = MutableLiveData<String>()
-
-    private val _setorListCompose = mutableListOf<List<ListSetor>>()
-    val setorListCompose: MutableList<List<ListSetor>> = _setorListCompose
-
-    private val _state = MutableStateFlow(emptyList<ListSetor>())
-    val state: StateFlow<List<ListSetor>>
-        get() = _state
 
     fun requestSetor() {
         val response = repository.requestSetor()
         response.enqueue(object : Callback<List<ListSetor>> {
             override fun onResponse(call: Call<List<ListSetor>>, response: Response<List<ListSetor>>) {
-                setorList.postValue(response.body())
-                _state.value = response.body()!!
+                _setorListState.value = response.body()!!
             }
             override fun onFailure(call: Call<List<ListSetor>>, t: Throwable) {
                 errorMessage.postValue(t.message)

@@ -3,79 +3,64 @@ package com.bsc.testtemi
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.material.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.findNavController
-import com.bsc.testtemi.data.model.ListSetor
+import androidx.lifecycle.ViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.bsc.testtemi.ui.navigation.NavRoutes
+import com.bsc.testtemi.ui.produtos.ProdutosViewModel
+import com.bsc.testtemi.ui.setor.SetorListScreen
 import com.bsc.testtemi.ui.setor.SetorViewModel
-import kotlinx.android.synthetic.main.main_activity.*
+import com.bsc.testtemi.ui.subsetor.SubSetorListScreen
+import com.bsc.testtemi.ui.subsetor.SubSetorViewModel
+import com.google.gson.annotations.SerializedName
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-
-class MainActivity : ComponentActivity() {
-
+class MainActivity() : ComponentActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         setContent {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    SetorListScreen()
-                }
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colors.background
+            ) {
+                MainScreen()
+            }
 
         }
-       //setContentView(R.layout.main_activity)
-        //setButtonAction()
     }
 
 
+
     @Composable
-    fun SetorListScreen(){
-        //val viewModel: SetorViewModel by viewModels()
-        val viewModel: SetorViewModel = getViewModel()
-        //val viewModel = viewModel(modelClass = SetorViewModel::class.java)
-        viewModel.requestSetor()
-        val state by viewModel.state.collectAsState()
-        LazyColumn {
-            if (state.isEmpty()) {
-                item {
-                    CircularProgressIndicator(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .wrapContentSize(align = Alignment.Center)
-                    )
-                }
-
+    fun MainScreen() {
+        val navController = rememberNavController()
+        val vmSetorList: SetorViewModel = getViewModel()
+        val vmSubSetorList: SubSetorViewModel = getViewModel()
+        val vmProdutosList: ProdutosViewModel = getViewModel()
+        NavHost(
+            navController = navController,
+            startDestination = NavRoutes.ListSetorRoute.route
+        ) {
+            composable(NavRoutes.ListSetorRoute.route) {
+                SetorListScreen(navController, vmSetorList)
             }
-
-            items(state) { character: ListSetor ->
-                Text(text = character.descSetor.toString(),
-                    fontSize = 25.sp
-                )
+            composable("${NavRoutes.ListSubSetorScreen.route}/{descSetor}",
+            arguments = listOf(navArgument("descSetor") {})){
+               SubSetorListScreen(navController, vmSubSetorList, it.arguments!!.getString("descSetor"))
             }
-
 
         }
-
     }
 
 
@@ -96,4 +81,11 @@ class MainActivity : ComponentActivity() {
 //        }
 //        super.onBackPressed()
 //    }
-}
+    }
+
+data class ScreenObjects(
+    @SerializedName("viewModelName" ) var viewModelName : String,
+    @SerializedName("viewModelObject" ) var viewModelObject : ViewModel,
+    @SerializedName("navControllerObject" ) var navControllerObject : NavHostController
+)
+
