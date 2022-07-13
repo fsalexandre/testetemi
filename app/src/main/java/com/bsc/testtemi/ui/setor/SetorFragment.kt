@@ -19,9 +19,11 @@ import kotlinx.android.synthetic.main.main_activity.*
 import kotlinx.android.synthetic.main.setor_fragment.*
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.java.KoinJavaComponent.get
+import org.koin.java.KoinJavaComponent.inject
 
 
-class SetorFragment : Fragment(), SetorListListener {
+class SetorFragment() : Fragment(), SetorListListener {
 
     private var setorListAux: MutableList<ListSetor> = mutableListOf()
     private lateinit var setorAdapter: SetorListAdapter

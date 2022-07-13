@@ -4,15 +4,6 @@ plugins {
     id 'kotlin-android-extensions'
 }
 
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-
-// Initialize a new Properties() object called keystoreProperties.
-def keystoreProperties = new Properties()
-
-// Load your keystore.properties file into the keystoreProperties object.
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
-
 android {
     compileSdk 31
 
@@ -26,21 +17,22 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-        }
-    }
-
     buildTypes {
+        debug {
+            buildConfigField "String", "api_urlbase", "\"https://www.protonbusmods.com/\""
+            buildConfigField "String", "api_listsetor_endpoint", "\"testtemi/list_setor.php\""
+            buildConfigField "String", "api_listsubsetor_endpoint", "\"testtemi/list_subsetor_bysetor.php\""
+            buildConfigField "String", "api_listprodutos_endpoint", "\"testtemi/list_produto_bysubsetor.php\""
+            buildConfigField "String", "api_listprodutosbyquery_endpoint", "\"testtemi/list_produto_byquery.php\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-        }
+            buildConfigField "String", "api_urlbase", "\"https://www.protonbusmods.com/\""
+            buildConfigField "String", "api_listsetor_endpoint", "\"testtemi/list_setor.php\""
+            buildConfigField "String", "api_listsubsetor_endpoint", "\"testtemi/list_subsetor_bysetor.php\""
+            buildConfigField "String", "api_listprodutos_endpoint", "\"testtemi/list_produto_bysubsetor.php\""
+            buildConfigField "String", "api_listprodutosbyquery_endpoint", "\"testtemi/list_produto_byquery.php\""        }
         buildFeatures {
             viewBinding true
             dataBinding true

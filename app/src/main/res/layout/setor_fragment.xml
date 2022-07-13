@@ -12,7 +12,7 @@
         android:id="@+id/rvListSetor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="56dp"
         android:background="?android:selectableItemBackground"
         android:foreground="?android:attr/selectableItemBackground"
         android:padding="8dp"

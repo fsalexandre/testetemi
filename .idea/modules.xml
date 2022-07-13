@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Bus_Simulation_Channel.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Teste_Alexandre.iml" filepath="$PROJECT_DIR$/.idea/modules/Teste_Alexandre.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Teste_Alexandre.app.androidTest.iml" />

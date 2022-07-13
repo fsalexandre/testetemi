@@ -1,10 +1,12 @@
 package com.bsc.testtemi.settings
 
-object settingsURL {
+import com.bsc.testtemi.BuildConfig
 
-    const val api_urlbase = "https://www.protonbusmods.com/"
-    const val api_listsetor_endpoint = "testtemi/list_setor.php"
-    const val api_listsubsetor_endpoint = "testtemi/list_subsetor_bysetor.php"
-    const val api_listprodutos_endpoint = "testtemi/list_produto_bysubsetor.php"
-    const val api_listprodutosbyquery_endpoint = "testtemi/list_produto_byquery.php"
+
+object settingsURL {
+    const val api_urlbase = BuildConfig.api_urlbase
+    const val api_listsetor_endpoint = BuildConfig.api_listsetor_endpoint
+    const val api_listsubsetor_endpoint = BuildConfig.api_listsubsetor_endpoint
+    const val api_listprodutos_endpoint = BuildConfig.api_listprodutos_endpoint
+    const val api_listprodutosbyquery_endpoint = BuildConfig.api_listprodutosbyquery_endpoint
 }

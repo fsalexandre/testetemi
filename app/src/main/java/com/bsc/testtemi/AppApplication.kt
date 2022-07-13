@@ -2,12 +2,10 @@ package com.bsc.testtemi
 
 import android.app.Application
 import com.bsc.testtemi.data.api.Repository
-import com.bsc.testtemi.di.produtosVMModulo
-import com.bsc.testtemi.di.repositoryModule
-import com.bsc.testtemi.di.setorVMModule
-import com.bsc.testtemi.di.subSetorVMModulo
+import com.bsc.testtemi.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 
 class AppApplication: Application() {
@@ -19,7 +17,6 @@ class AppApplication: Application() {
             modules(subSetorVMModulo)
             modules(produtosVMModulo)
             modules(repositoryModule)
-
         }
     }
 }
