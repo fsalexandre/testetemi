@@ -36,6 +36,8 @@ android {
         buildFeatures {
             viewBinding true
             dataBinding true
+            compose true
+
         }
     }
     compileOptions {
@@ -45,6 +47,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.2.0-rc02'
+    }
+
 }
 
 dependencies {
@@ -86,5 +92,20 @@ dependencies {
     implementation "io.insert-koin:koin-core:$koin_version"
     testImplementation "io.insert-koin:koin-test:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
+
+    //jetpack compose implementation
+    // Integration with activities
+    implementation 'androidx.activity:activity-compose:1.4.0'
+    // Compose Material Design
+    implementation 'androidx.compose.material:material:1.1.1'
+    // Animations
+    implementation 'androidx.compose.animation:animation:1.1.1'
+    // Tooling support (Previews, etc.)
+    implementation 'androidx.compose.ui:ui-tooling:1.1.1'
+    // Integration with ViewModels
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
+    // UI Tests
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.1.1'
+
 
 }
